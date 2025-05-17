@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXTECH - Tecnología Minimalista</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">NEXTECH</div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h1>Tecnología Minimalista</h1>
+            <p>Diseño elegante. Rendimiento excepcional.</p>
+            <a href="#productos" class="btn-primary">Explorar Productos</a>
+        </div>
+    </header>
+
+    <section id="productos" class="productos-section">
+        <h2>Nuestros Productos</h2>
+        <div class="productos-grid">
+            <div class="producto-card">
+                <div class="producto-img">
+                    <div class="placeholder-img">Laptop Pro</div>
+                </div>
+                <h3>Laptop Pro X1</h3>
+                <p>Potencia y elegancia en un diseño ultradelgado. Procesador de última generación con 16GB de RAM y 1TB SSD para un rendimiento excepcional en cualquier tarea.</p>
+                <p class="precio">$1,299.99</p>
+                <button class="btn-secondary">Añadir al Carrito</button>
+            </div>
+            <div class="producto-card">
+                <div class="producto-img">
+                    <div class="placeholder-img">Smartwatch</div>
+                </div>
+                <h3>Smartwatch Pulse</h3>
+                <p>Monitoreo avanzado de salud con diseño minimalista. Pantalla AMOLED de alta resolución y batería de larga duración para mantenerte conectado todo el día.</p>
+                <p class="precio">$249.99</p>
+                <button class="btn-secondary">Añadir al Carrito</button>
+            </div>
+            <div class="producto-card">
+                <div class="producto-img">
+                    <div class="placeholder-img">Auriculares</div>
+                </div>
+                <h3>Auriculares NoiseZero</h3>
+                <p>Cancelación de ruido activa con calidad de sonido premium. Diseño ergonómico para máxima comodidad durante largas sesiones de uso.</p>
+                <p class="precio">$179.99</p>
+                <button class="btn-secondary">Añadir al Carrito</button>
+            </div>
+            <div class="producto-card">
+                <div class="producto-img">
+                    <div class="placeholder-img">Tablet</div>
+                </div>
+                <h3>Tablet UltraSlim</h3>
+                <p>Experiencia visual inmersiva con pantalla de 11 pulgadas. Perfecta para creativos y profesionales que buscan portabilidad sin sacrificar rendimiento.</p>
+                <p class="precio">$499.99</p>
+                <button class="btn-secondary">Añadir al Carrito</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="destacado" class="destacado-section">
+        <div class="destacado-content">
+            <h2>Producto Destacado</h2>
+            <h3>Smartphone NX Pro</h3>
+            <p>Redefine tu experiencia móvil con nuestro smartphone insignia. Cámara profesional de 108MP, pantalla AMOLED de 120Hz y procesador de última generación para un rendimiento sin precedentes. Diseño minimalista con acabado premium en titanio y vidrio resistente a impactos.</p>
+            <p class="precio-destacado">$899.99</p>
+            <a href="#" class="btn-primary">Ver Detalles</a>
+        </div>
+        <div class="destacado-img">
+            <div class="placeholder-img-large">Smartphone NX Pro</div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="nosotros-section">
+        <h2>Sobre Nosotros</h2>
+        <div class="nosotros-content">
+            <div class="nosotros-text">
+                <p>En NEXTECH, creemos que la tecnología debe ser tan hermosa como funcional. Fundada en 2020, nuestra empresa nació con la visión de crear productos electrónicos que combinen un diseño minimalista con un rendimiento excepcional.</p>
+                <p>Nuestro equipo está formado por apasionados de la tecnología y el diseño que trabajan incansablemente para ofrecer productos que no solo cumplan con las expectativas, sino que las superen. Cada dispositivo que creamos pasa por rigurosos controles de calidad para garantizar la mejor experiencia de usuario.</p>
+                <p>Nos comprometemos con la sostenibilidad y la responsabilidad ambiental, utilizando materiales reciclables y procesos de fabricación que minimizan nuestro impacto en el planeta. Creemos que la innovación tecnológica debe ir de la mano con el cuidado del medio ambiente.</p>
+            </div>
+            <div class="valores">
+                <div class="valor">
+                    <h3>Innovación</h3>
+                    <p>Constantemente buscamos nuevas formas de mejorar nuestros productos y servicios.</p>
+                </div>
+                <div class="valor">
+                    <h3>Calidad</h3>
+                    <p>Nos comprometemos a ofrecer productos duraderos y de alto rendimiento.</p>
+                </div>
+                <div class="valor">
+                    <h3>Diseño</h3>
+                    <p>Creemos que la simplicidad y la elegancia son fundamentales en cada producto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contacto-section">
+        <h2>Contacto</h2>
+        <div class="contacto-container">
+            <form class="contacto-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Enviar Mensaje</button>
+            </form>
+            <div class="contacto-info">
+                <div class="info-item">
+                    <h3>Dirección</h3>
+                    <p>Av. Tecnológica 123, Ciudad Innovación</p>
+                </div>
+                <div class="info-item">
+                    <h3>Email</h3>
+                    <p>info@nextech.com</p>
+                </div>
+                <div class="info-item">
+                    <h3>Teléfono</h3>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+                <div class="info-item">
+                    <h3>Horario</h3>
+                    <p>Lunes a Viernes: 9:00 - 18:00</p>
+                    <p>Sábado: 10:00 - 14:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">NEXTECH</div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Productos</h4>
+                    <ul>
+                        <li><a href="#">Smartphones</a></li>
+                        <li><a href="#">Laptops</a></li>
+                        <li><a href="#">Auriculares</a></li>
+                        <li><a href="#">Accesorios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Carreras</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Prensa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Soporte</h4>
+                    <ul>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Garantía</a></li>
+                        <li><a href="#">Devoluciones</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-icon">FB</a>
+                <a href="#" class="social-icon">IG</a>
+                <a href="#" class="social-icon">TW</a>
+                <a href="#" class="social-icon">YT</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 NEXTECH. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
