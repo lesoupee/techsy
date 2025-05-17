@@ -6,6 +6,7 @@
     <title>TECHSY - Tecnología</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
@@ -22,6 +23,10 @@
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
+            <div class="cart-icon" id="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
         </nav>
         <div class="hero">
             <h1>Tecnología. Techsy.</h1>
@@ -29,6 +34,36 @@
             <a href="#productos" class="btn-primary">Explorar Productos</a>
         </div>
     </header>
+
+<!-- Modal del carrito -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Tu Carrito</h3>
+                <button class="close-cart" id="close-cart">&times;</button>
+            </div>
+            <div class="cart-items" id="cart-items">
+                <!-- Los items del carrito se generarán dinámicamente aquí -->
+            </div>
+            <div class="cart-summary">
+                <div class="cart-subtotal">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <!-- NUEVO: Sección de cupón de descuento -->
+                <div class="discount-section">
+                    <input type="text" id="discount-code" placeholder="Código de descuento">
+                    <button id="apply-discount" class="btn-secondary">Aplicar</button>
+                    <div id="discount-message"></div>
+                </div>
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <button id="checkout-btn" class="btn-primary">Proceder al Pago</button>
+            </div>
+        </div>
+    </div>
 
     <section id="productos" class="productos-section">
         <h2>Nuestros Productos</h2>
@@ -78,12 +113,239 @@
             <h3>Smartphone NX Pro</h3>
             <p>Redefine tu experiencia móvil con nuestro smartphone insignia. Cámara profesional de 108MP, pantalla AMOLED de 120Hz y procesador de última generación para un rendimiento sin precedentes. Diseño minimalista con acabado premium en titanio y vidrio resistente a impactos.</p>
             <p class="precio-destacado">$899.99</p>
-            <a href="#" class="btn-primary">Ver Detalles</a>
+            <button class="btn-primary add-to-cart" data-id="5" data-price="899.99">Añadir al Carrito</button>
         </div>
         <div class="destacado-img">
             <div class="placeholder-img-large">Smartphone NX Pro</div>
         </div>
     </section>
+
+    <!-- NUEVO: Sección de proceso de pago -->
+    <div class="checkout-modal" id="checkout-modal">
+        <div class="checkout-content">
+            <!-- Paso 1: Información de contacto -->
+            <div class="checkout-step" id="checkout-step-1">
+                <div class="checkout-header">
+                    <h3>Paso 1: Información de Contacto</h3>
+                    <button class="close-checkout" id="close-checkout">&times;</button>
+                </div>
+                <div class="checkout-form">
+                    <div class="form-group">
+                        <label for="checkout-nombre">Nombre completo</label>
+                        <input type="text" id="checkout-nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout-email">Email</label>
+                        <input type="email" id="checkout-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout-telefono">Teléfono</label>
+                        <input type="tel" id="checkout-telefono" required>
+                    </div>
+                    <div class="checkout-buttons">
+                        <button class="btn-secondary" id="cancel-checkout">Cancelar</button>
+                        <button class="btn-primary" id="next-step-1">Continuar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Paso 2: Opciones de envío -->
+            <div class="checkout-step" id="checkout-step-2">
+                <div class="checkout-header">
+                    <h3>Paso 2: Opciones de Envío</h3>
+                </div>
+                <div class="checkout-form">
+                    <div class="shipping-options">
+                        <div class="shipping-option">
+                            <input type="radio" id="pickup" name="shipping" value="pickup" checked>
+                            <label for="pickup">
+                                <span class="shipping-name">Recoger en punto</span>
+                                <span class="shipping-price">$0.00</span>
+                            </label>
+                        </div>
+                        <div class="shipping-option">
+                            <input type="radio" id="delivery" name="shipping" value="delivery">
+                            <label for="delivery">
+                                <span class="shipping-name">Envío a domicilio</span>
+                                <span class="shipping-price">$10.00</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div id="delivery-address" class="hidden">
+                        <div class="form-group">
+                            <label for="checkout-direccion">Dirección</label>
+                            <input type="text" id="checkout-direccion">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-ciudad">Ciudad</label>
+                            <input type="text" id="checkout-ciudad">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-codigo-postal">Código Postal</label>
+                            <input type="text" id="checkout-codigo-postal">
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-buttons">
+                        <button class="btn-secondary" id="prev-step-2">Atrás</button>
+                        <button class="btn-primary" id="next-step-2">Continuar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Paso 3: Método de pago -->
+            <div class="checkout-step" id="checkout-step-3">
+                <div class="checkout-header">
+                    <h3>Paso 3: Método de Pago</h3>
+                </div>
+                <div class="checkout-form">
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <input type="radio" id="credit-card" name="payment" value="credit-card" checked>
+                            <label for="credit-card">Tarjeta de Crédito</label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="bank-transfer" name="payment" value="bank-transfer">
+                            <label for="bank-transfer">Transferencia Bancaria</label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="mercado-pago" name="payment" value="mercado-pago">
+                            <label for="mercado-pago">Mercado Pago</label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="cash" name="payment" value="cash">
+                            <label for="cash">Efectivo</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Formulario de tarjeta de crédito -->
+                    <div id="credit-card-form">
+                        <div class="form-group">
+                            <label for="card-number">Número de Tarjeta</label>
+                            <input type="text" id="card-number" placeholder="XXXX XXXX XXXX XXXX">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <label for="card-expiry">Fecha de Expiración</label>
+                                <input type="text" id="card-expiry" placeholder="MM/AA">
+                            </div>
+                            <div class="form-group half">
+                                <label for="card-cvv">CVV</label>
+                                <input type="text" id="card-cvv" placeholder="XXX">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-name">Nombre en la Tarjeta</label>
+                            <input type="text" id="card-name">
+                        </div>
+                    </div>
+                    
+                    <!-- Instrucciones para transferencia bancaria -->
+                    <div id="bank-transfer-info" class="hidden">
+                        <p>Realiza una transferencia a la siguiente cuenta bancaria:</p>
+                        <p><strong>Banco:</strong> Banco Nacional</p>
+                        <p><strong>Titular:</strong> NEXTECH S.A.</p>
+                        <p><strong>Cuenta:</strong> 1234-5678-9012-3456</p>
+                        <p><strong>Referencia:</strong> Tu número de pedido se generará al completar la compra</p>
+                    </div>
+                    
+                    <!-- Instrucciones para Mercado Pago -->
+                    <div id="mercado-pago-info" class="hidden">
+                        <p>Serás redirigido a Mercado Pago para completar tu compra después de confirmar el pedido.</p>
+                    </div>
+                    
+                    <!-- Instrucciones para pago en efectivo -->
+                    <div id="cash-info" class="hidden">
+                        <p>Podrás pagar en efectivo al recoger tu pedido en nuestro punto de venta.</p>
+                        <p><strong>Dirección:</strong> Av. Tecnológica 123, Ciudad Innovación</p>
+                        <p><strong>Horario:</strong> Lunes a Viernes: 9:00 - 18:00, Sábado: 10:00 - 14:00</p>
+                    </div>
+                    
+                    <div class="checkout-buttons">
+                        <button class="btn-secondary" id="prev-step-3">Atrás</button>
+                        <button class="btn-primary" id="next-step-3">Continuar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Paso 4: Resumen y confirmación -->
+            <div class="checkout-step" id="checkout-step-4">
+                <div class="checkout-header">
+                    <h3>Paso 4: Resumen y Confirmación</h3>
+                </div>
+                <div class="checkout-form">
+                    <div class="order-summary">
+                        <h4>Resumen del Pedido</h4>
+                        <div id="order-items">
+                            <!-- Los items del pedido se generarán dinámicamente aquí -->
+                        </div>
+                        <div class="order-totals">
+                            <div class="order-subtotal">
+                                <span>Subtotal:</span>
+                                <span id="order-subtotal">$0.00</span>
+                            </div>
+                            <div class="order-discount hidden" id="order-discount-container">
+                                <span>Descuento:</span>
+                                <span id="order-discount">$0.00</span>
+                            </div>
+                            <div class="order-shipping">
+                                <span>Envío:</span>
+                                <span id="order-shipping">$0.00</span>
+                            </div>
+                            <div class="order-total">
+                                <span>Total:</span>
+                                <span id="order-total">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="customer-info-summary">
+                        <h4>Información de Contacto</h4>
+                        <p id="summary-customer-name"></p>
+                        <p id="summary-customer-email"></p>
+                        <p id="summary-customer-phone"></p>
+                    </div>
+                    
+                    <div class="shipping-info-summary">
+                        <h4>Información de Envío</h4>
+                        <p id="summary-shipping-method"></p>
+                        <div id="summary-shipping-address" class="hidden">
+                            <p id="summary-address"></p>
+                            <p id="summary-city-zip"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-info-summary">
+                        <h4>Método de Pago</h4>
+                        <p id="summary-payment-method"></p>
+                    </div>
+                    
+                    <div class="checkout-buttons">
+                        <button class="btn-secondary" id="prev-step-4">Atrás</button>
+                        <button class="btn-primary" id="place-order">Confirmar Pedido</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Confirmación de pedido -->
+            <div class="checkout-step" id="checkout-confirmation">
+                <div class="checkout-header">
+                    <h3>¡Pedido Confirmado!</h3>
+                </div>
+                <div class="confirmation-content">
+                    <div class="confirmation-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h4>Gracias por tu compra</h4>
+                    <p>Tu pedido ha sido recibido y está siendo procesado.</p>
+                    <p>Hemos enviado un correo electrónico con los detalles de tu compra a <span id="confirmation-email"></span>.</p>
+                    <p>Número de pedido: <strong id="order-number"></strong></p>
+                    <button class="btn-primary" id="continue-shopping">Continuar Comprando</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section id="nosotros" class="nosotros-section">
         <h2>Sobre Nosotros</h2>
