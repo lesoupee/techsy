@@ -6,6 +6,8 @@
     --color-white: #ffffff;
     --color-gray: #cccccc;
     --color-dark-gray: #666666;
+    --color-success: #2ecc71;
+    --color-error: #e74c3c;
     --transition: all 0.3s ease;
 }
 
@@ -175,6 +177,409 @@ nav {
     font-size: 1.2rem;
     margin-bottom: 2rem;
     max-width: 600px;
+}
+
+/* NUEVO: Estilos para el icono del carrito */
+.cart-icon {
+    position: relative;
+    cursor: pointer;
+    margin-left: 2rem;
+    font-size: 1.5rem;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: 0.8rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+}
+
+/* NUEVO: Estilos para el modal del carrito */
+.cart-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: flex-end;
+    align-items: flex-start;
+    z-index: 1000;
+}
+
+.cart-content {
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    background-color: var(--color-white);
+    padding: 2rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-gray);
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--color-primary);
+}
+
+.cart-items {
+    flex: 1;
+    margin-bottom: 2rem;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-gray);
+}
+
+.cart-item-img {
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    border-radius: 5px;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-title {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.cart-item-price {
+    font-weight: 500;
+    color: var(--color-secondary);
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.quantity-btn {
+    width: 25px;
+    height: 25px;
+    background-color: var(--color-light);
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity-input {
+    width: 40px;
+    height: 25px;
+    text-align: center;
+    border: 1px solid var(--color-gray);
+    margin: 0 0.5rem;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: var(--color-dark-gray);
+    cursor: pointer;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+}
+
+.cart-summary {
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-gray);
+}
+
+.cart-subtotal, .cart-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.cart-total {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-gray);
+}
+
+/* NUEVO: Estilos para la sección de descuento */
+.discount-section {
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.discount-section input {
+    padding: 0.8rem;
+    border: 1px solid var(--color-gray);
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}
+
+.discount-section button {
+    align-self: flex-start;
+    padding: 0.5rem 1rem;
+}
+
+#discount-message {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.discount-applied {
+    color: var(--color-success);
+}
+
+.discount-error {
+    color: var(--color-error);
+}
+
+/* NUEVO: Estilos para el proceso de checkout */
+.checkout-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.checkout-content {
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    background-color: var(--color-white);
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+.checkout-step {
+    display: none;
+    padding: 2rem;
+}
+
+.checkout-step.active {
+    display: block;
+}
+
+.checkout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-gray);
+}
+
+.close-checkout {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--color-primary);
+}
+
+.checkout-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-group.half {
+    flex: 1;
+}
+
+.checkout-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+/* NUEVO: Estilos para las opciones de envío */
+.shipping-options {
+    margin-bottom: 2rem;
+}
+
+.shipping-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--color-gray);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.shipping-option:hover {
+    background-color: var(--color-light);
+}
+
+.shipping-option input {
+    margin-right: 1rem;
+}
+
+.shipping-option label {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.shipping-name {
+    font-weight: 500;
+}
+
+.shipping-price {
+    font-weight: 700;
+}
+
+/* NUEVO: Estilos para las opciones de pago */
+.payment-options {
+    margin-bottom: 2rem;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--color-gray);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.payment-option:hover {
+    background-color: var(--color-light);
+}
+
+.payment-option input {
+    margin-right: 1rem;
+}
+
+.payment-option label {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* NUEVO: Estilos para el resumen del pedido */
+.order-summary {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-gray);
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-light);
+}
+
+.order-item-name {
+    flex: 1;
+}
+
+.order-item-quantity {
+    margin: 0 1rem;
+}
+
+.order-totals {
+    margin-top: 1rem;
+}
+
+.order-subtotal, .order-discount, .order-shipping, .order-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.order-total {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-gray);
+}
+
+/* NUEVO: Estilos para la confirmación del pedido */
+.checkout-confirmation {
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.confirmation-icon {
+    font-size: 5rem;
+    color: var(--color-success);
+    margin-bottom: 2rem;
+}
+
+.confirmation-content h4 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.confirmation-content p {
+    margin-bottom: 0.5rem;
+}
+
+#order-number {
+    font-size: 1.2rem;
+}
+
+#continue-shopping {
+    margin-top: 2rem;
+}
+
+/* Utilidades */
+.hidden {
+    display: none;
 }
 
 /* Sección de productos */
@@ -501,6 +906,21 @@ footer {
         width: 100%;
         order: -1;
     }
+    
+    /* NUEVO: Ajustes responsivos para el carrito y checkout */
+    .cart-content {
+        max-width: 100%;
+    }
+    
+    .checkout-content {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
 }
 
 @media (max-width: 480px) {
@@ -514,5 +934,18 @@ footer {
     
     h2 {
         font-size: 1.8rem;
+    }
+    
+    .checkout-step {
+        padding: 1.5rem;
+    }
+    
+    .checkout-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .checkout-buttons button {
+        width: 100%;
     }
 }
